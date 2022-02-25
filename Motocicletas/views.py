@@ -8,10 +8,10 @@ def Home(request):
     horaFin=20
     lineas=[]
     i=horaInicio
-    while i < horaFin:
+    while i <= horaFin:
         lineas.append(i)
         i=i+1
 
     datos={"cant_motos": 7, "horaInicio": 8, "lineas":lineas}
    
-    return  render(request,"home.html",datos)
+    return  render(request,"home.php",datos)

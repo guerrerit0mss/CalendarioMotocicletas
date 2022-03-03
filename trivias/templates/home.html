@@ -48,8 +48,8 @@
   
       .imagen {
         object-fit: cover;
-        height: 0px;
-        width: 0px;
+        height: 200px;
+        width: 100px;
       }
   
       .btn {
@@ -81,19 +81,19 @@
     <div class="contenedor">
       <div class="puntaje" id="puntaje"></div>
       <div class="encabezado">
-        <div class="categoria" id="categoria">
+        <div class="categoria" id="categoria">{{categoria}}
         </div>
         <div class="numero" id="numero"></div>
-        <div class="pregunta" id="pregunta">
+        <div class="pregunta" id="pregunta">{{pregunta}}
         </div>
-        <img src="#" class="imagen" id="imagen">
+        <img src="{{imagen}}" class="imagen" id="imagen">
       </div>
-      <div class="btn" id="btn1" onclick="oprimir_btn(0)"></div>
-      <div class="btn" id="btn2" onclick="oprimir_btn(1)"></div>
-      <div class="btn" id="btn3" onclick="oprimir_btn(2)"></div>
-      <div class="btn" id="btn4" onclick="oprimir_btn(3)"></div>
+      <div class="btn" id="btn1" onclick="oprimir_btn(0)">{{respuesta1}} </div>
+      <div class="btn" id="btn2" onclick="oprimir_btn(1)">{{respuesta2}}</div>
+      <div class="btn" id="btn3" onclick="oprimir_btn(2)">{{respuesta3}}</div>
+      <div class="btn" id="btn4" onclick="oprimir_btn(3)">{{respuesta4}}</div>
       
-      <script src="index.js"></script>
+     <!-- <script src="index.js"></script>-->
     </div>
   
   </body></html>

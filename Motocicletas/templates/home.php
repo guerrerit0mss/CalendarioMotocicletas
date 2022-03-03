@@ -21,7 +21,9 @@
 .table-hover tbody tr:hover {
       background-color: rgba(122, 114, 81, 0.7);
       color: rgb(112, 24, 78);
-    }
+}
+
+
 
 </style>
 <body>

@@ -12,6 +12,6 @@ def Home(request):
         lineas.append(i)
         i=i+1
 
-    datos={"cant_motos": 7, "horaInicio": 8, "lineas":lineas}
+    datos={"cant_motos": 8, "horaInicio": 8, "lineas":lineas}
    
     return  render(request,"home.php",datos)

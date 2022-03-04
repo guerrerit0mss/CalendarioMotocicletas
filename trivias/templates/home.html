@@ -48,8 +48,8 @@
   
       .imagen {
         object-fit: cover;
-        height: 300px;
-        width: 150px;
+        height: 200px;
+        width: 95%;
       }
   
       .btn {
@@ -82,20 +82,27 @@
     <div class="contenedor">
       <div class="puntaje" id="puntaje"></div>
       <div class="encabezado">
-        <div class="categoria" id="categoria">{{categoria}}
+        <div class="categoria" id="categoria">
+          {% for cat in contexto.categoria %}            
+           {{ cat.nombre }}           
+          {% endfor %}
         </div>
         <div class="numero" id="numero"></div>
-        <div class="pregunta" id="pregunta">
-         
-         
+        <div class="pregunta" id="pregunta">     
+
           {% for preg in contexto.preguntas %}            
             {{ preg.id }}
             {{ preg.texto }}            
           {% endfor %}
-        </div> <img src="{{datos.imagen}}" class="imagen" id="imagen"> </div>
-        {{contexto.respuestas}}
+          
+        </div> <img src=" 
+      {% for preg in contexto.preguntas %}            
+        {{ preg.imagen }}         
+      {% endfor %}" 
+      class="imagen" id="imagen"> </div>
+        
       {% for resp in contexto.respuestas %}                 
-        <div class="btn" id="btn"  onclick="oprimir_btn('{{resp.1}}')">{{resp.0}} {{resp.1}}</div>                
+        <div class="btn" id="btn"  onclick="oprimir_btn('{{resp.1}}')">{{resp.0}}</div>                
       {% endfor %}
       
       

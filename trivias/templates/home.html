@@ -48,8 +48,8 @@
   
       .imagen {
         object-fit: cover;
-        height: 200px;
-        width: 100px;
+        height: 300px;
+        width: 150px;
       }
   
       .btn {
@@ -58,6 +58,7 @@
         max-width: 550px;
         padding: 10px;
         margin: 5px;
+        margin-bottom: 5px;
         cursor: pointer;
       }
   
@@ -77,23 +78,41 @@
         color:white;
       }
     </style>
-  
+    
     <div class="contenedor">
       <div class="puntaje" id="puntaje"></div>
       <div class="encabezado">
         <div class="categoria" id="categoria">{{categoria}}
         </div>
         <div class="numero" id="numero"></div>
-        <div class="pregunta" id="pregunta">{{pregunta}}
-        </div>
-        <img src="{{imagen}}" class="imagen" id="imagen">
-      </div>
-      <div class="btn" id="btn1" onclick="oprimir_btn(0)">{{respuesta1}} </div>
-      <div class="btn" id="btn2" onclick="oprimir_btn(1)">{{respuesta2}}</div>
-      <div class="btn" id="btn3" onclick="oprimir_btn(2)">{{respuesta3}}</div>
-      <div class="btn" id="btn4" onclick="oprimir_btn(3)">{{respuesta4}}</div>
+        <div class="pregunta" id="pregunta">
+         
+         
+          {% for preg in contexto.preguntas %}            
+            {{ preg.id }}
+            {{ preg.texto }}            
+          {% endfor %}
+        </div> <img src="{{datos.imagen}}" class="imagen" id="imagen"> </div>
+        {{contexto.respuestas}}
+      {% for resp in contexto.respuestas %}                 
+        <div class="btn" id="btn"  onclick="oprimir_btn('{{resp.1}}')">{{resp.0}} {{resp.1}}</div>                
+      {% endfor %}
+      
       
      <!-- <script src="index.js"></script>-->
     </div>
   
-  </body></html>
+  </body>
+
+  <script>
+    function oprimir_btn(valor) {
+      if(valor=="True"){
+        alert("correcto");
+      }else{
+        alert("incorrecto");
+      }
+    }
+  </script>
+ 
+  
+  </html>

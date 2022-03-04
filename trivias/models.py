@@ -17,5 +17,5 @@ class preguntas(models.Model):
 
 class respuestas(models.Model):
     texto=models.CharField(max_length=20, null=False)
-    categoria=models.IntegerField(null=False)
+    pregunta=models.IntegerField(null=False)
     acierto=models.BooleanField(null=False)

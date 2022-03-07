@@ -37,8 +37,13 @@
         
         function oprimir_btn() {
             user=document.getElementById('user').value;
-            var hora=new Date();
-            location.href= "http://127.0.0.1:8000/trivias/preguntas/?qstn=1&&?pntj=0&&hora='${hora}'&&?user='${user}'";
+            minutos=new Date().getMinutes();
+            segundos=new Date().getSeconds();
+            hora=minutos.toString()+segundos.toString();
+            str1="http://127.0.0.1:8000/trivias/preguntas/?qstn=1&pntj=0&hora=";
+            url=str1.concat(hora,"&user=",user);
+           // location.href= "http://127.0.0.1:8000/trivias/preguntas/?qstn=1&pntj=0&hora='${hora}'&user='${user}'";
+           location.href=url;
         }
 
     </script>

@@ -8,7 +8,11 @@
   
   <body>
 
-    
+   <p>hora:{{contexto.hora}}</p>
+    <p>user:{{contexto.user}}</p>
+    <p>puntaje:{{contexto.puntaje}}</p>
+
+
     <div class="contenedor">
       <div class="puntaje" id="puntaje"></div>
       <div class="encabezado">
@@ -34,22 +38,26 @@
       {% for resp in contexto.respuestas %}                 
         <div class="btn" id="btn"  onclick="oprimir_btn('{{resp.1}}')">{{resp.0}}</div>                
       {% endfor %}
-      
-      
-     <!-- <script src="index.js"></script>-->
     </div>
   
   </body>
-
   <script>
-
     function oprimir_btn(valor) {
       if(valor=="True"){
-        alert("correcto");
-        location.href= "http://127.0.0.1:8000/trivias/preguntas/?qstn={{contexto.Npreg}}";
+      //  alert("correcto");
+        puntaje=parseInt("{{contexto.puntaje}}")+1;
+        
+     //   location.href= "http://127.0.0.1:8000/trivias/preguntas/?qstn={{contexto.Npreg}}&user={{contexto.user}}&pntj={{contexto.puntaje}}&hora={{contexto.hora}}";
       }else{
-        alert("incorrecto");
+       // alert("incorrecto");
+        puntaje=parseInt("{{contexto.puntaje}}");
       }
+      preguntan="{{contexto.Npreg}}";
+      usuario="{{contexto.user}}";
+      horario="{{contexto.hora}}";
+      str1="http://127.0.0.1:8000/trivias/preguntas/?qstn=";
+      url=str1.concat(preguntan,"&user=",usuario,"&hora=",horario,"&pntj=",puntaje);
+      location.href= url;       
     }
   </script>
  

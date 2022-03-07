@@ -9,22 +9,22 @@ import random
 
 def trivias(request):
    numeroPreg=1
-   if request.method == 'GET':            
+   if request.method == 'GET':      
+      horas=request.GET.get('hora')        
       numeroPreg=request.GET.get('qstn')             
-      puntaje=request.GET.get('pntj')    
-      hora=request.GET.get('hora')
-      user=request.GET.get('user')
-
-      
-  
-   datos={"contexto": ordenarPreguntas(numeroPreg)}   
+      puntaje=request.GET.get('pntj')  
+      user=request.GET.get('user')      
+      #Comprobacion para finalizar trivia e ir a tabla de posiciones
+      if int(numeroPreg)==3:         
+         datos={"user":user,"hora":horas, "puntaje":puntaje}
+         return  render(request,"final.html",datos)      
+   
+   datos={"contexto": ordenarPreguntas(numeroPreg, user, horas, puntaje)}   
    return  render(request,"home.html",datos)
 
-def iniciaSesion(request):
 
-   return  render(request,"iniciaSesion.html")
 
-def ordenarPreguntas(numeroPregunta):   
+def ordenarPreguntas(numeroPregunta, user, horas, puntaje):   
    #Se hace la query para preguntas
    preg= preguntas.objects.filter(id=numeroPregunta)
 
@@ -43,7 +43,9 @@ def ordenarPreguntas(numeroPregunta):
    random.shuffle(resp_ord)#desordeno las respuestas
    sigPreg=int(numeroPregunta)+1
 
-   contex={"preguntas":preg, "respuestas":resp_ord, "categoria": categ, "Npreg":sigPreg}#armo el diccionario a enviar  
+   contex={"preguntas":preg, "respuestas":resp_ord, "categoria": categ, "Npreg":sigPreg, "user":user, "puntaje":puntaje, "hora":horas}#armo el diccionario a enviar  
   
    return contex
 
+def iniciaSesion(request):
+   return  render(request,"iniciaSesion.html")

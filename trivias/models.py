@@ -9,6 +9,7 @@ class categorias(models.Model):
 class usuario(models.Model):
     nombre=models.CharField(max_length=20, null=False)
     tiempo=models.IntegerField( null=False)
+    fechaCreacion=models.DateField(null=False)
 
 class preguntas(models.Model):
     texto=models.CharField(max_length=30, null=False)

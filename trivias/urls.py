@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.trivias),
+    path('preguntas/', views.trivias),
+    path('IniciaSesion/', views.iniciaSesion),
 ]
